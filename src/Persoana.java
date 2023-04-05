@@ -1,11 +1,13 @@
-public class Persoana {
+public  abstract class  Persoana {
 
     String nume;
+    String prenume;
     int varsta;
-    int sex;
+    String sex;
 
-    public Persoana(String nume, int varsta, int sex) {
+    public Persoana(String nume, String prenume, int varsta, String sex) {
         this.nume = nume;
+        this.prenume = prenume;
         this.varsta = varsta;
         this.sex = sex;
     }
@@ -26,11 +28,23 @@ public class Persoana {
         this.varsta = varsta;
     }
 
-    public int getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
+
+    public String getPrenume() {
+        return prenume;
+    }
+
+    public void setPrenume(String prenume) {
+        this.prenume = prenume;
+    }
+
+    ///abstract  void afisare();
+    abstract void afisare();
+
 }
