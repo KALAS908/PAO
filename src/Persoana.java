@@ -1,9 +1,9 @@
 public  abstract class  Persoana {
 
-    String nume;
-    String prenume;
-    int varsta;
-    String sex;
+    protected String nume;
+    protected String prenume;
+    protected int varsta;
+    protected String sex;
 
     public Persoana(String nume, String prenume, int varsta, String sex) {
         this.nume = nume;
