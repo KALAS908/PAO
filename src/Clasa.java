@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
 public class Clasa {
 
     List<Elev> elevi = new ArrayList<Elev>();
@@ -71,6 +69,33 @@ public void adaugaElev(Elev elev) {
             elev.afisare();
         }
         System.out.println ("==================AM TERMINAT AFISAREA ELEVILOR DIN CLASA ===================================");
+  }
+
+
+  public void stergereElev(String nume )
+  {
+        for (Elev elev : elevi) {
+            if (elev.getNume().equals(nume))
+            {
+                elevi.remove(elev);
+                nrElevi--;
+                break;
+            }
+        }
+  }
+  public void adaugaProfesor()
+  {
+      Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduceti numele profesorului: ");
+        String nume = scanner.nextLine();
+        System.out.println("Introduceti prenumele profesorului: ");
+        String prenume = scanner.nextLine();
+        System.out.println("Introduceti varsta profesorului: ");
+        int varsta = scanner.nextInt();
+        System.out.println("Introduceti sexul profesorului:(M/F)");
+
+
+
   }
 
    public void afisareClasa() {

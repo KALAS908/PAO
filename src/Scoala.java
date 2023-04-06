@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Scoala {
 
@@ -37,11 +34,9 @@ public class Scoala {
             System.out.println("Materia " + materie.getNume() + " este predata de " + materie.getProfesorCurs().getNume() + " " + materie.getProfesorCurs().getPrenume());
         }
     }
-
     public void adaugaProfesor(Profesor profesor) {
         profesori.put(profesor.getNume(), profesor);
     }
-
 
     public String getNumeScoala() {
         return numeScoala;
@@ -66,4 +61,5 @@ public class Scoala {
     public Map<String, Profesor> getProfesori() {
         return profesori;
     }
+
 }

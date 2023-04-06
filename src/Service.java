@@ -129,8 +129,9 @@ public class Service {
           Scanner scanner = new Scanner(System.in);
           System.out.println("Introduceti numele clasei: ");
           String numeClasa = scanner.nextLine();
-          System.out.println("Introduceti numele profesorului: ");
+          System.out.println("Introduceti numele Dirigintelui: ");
           String numeProfesor = scanner.nextLine();
+
           if (scoala.getProfesori().containsKey(numeProfesor)) {
 
               Profesor profesor = scoala.getProfesori().get(numeProfesor);
@@ -147,7 +148,7 @@ public class Service {
       }
 
 
-      public void aduagaProfesor() {
+      public void adaugaProfesor() {
           Scanner scanner = new Scanner(System.in);
           System.out.println("Introduceti numele profesorului: ");
           String numeProfesor = scanner.nextLine();
@@ -158,8 +159,7 @@ public class Service {
           scanner.nextLine();
           System.out.println("Introduceti genul profesorului:(M/F) ");
           String genProfesor = scanner.nextLine();
-          System.out.println("Introduceti numele scolii: ");
-          String numeSc = scanner.nextLine();
+          String numeSc = scoala.getNumeScoala();
           System.out.println("Introduceti salariul profesorului: ");
           int salariuProfesor = scanner.nextInt();
           scanner.nextLine();
@@ -180,6 +180,7 @@ public class Service {
             String numeMaterie = scanner.nextLine();
             System.out.println("Intorduceti numarul de credite: ");
             int nrCredite = scanner.nextInt();
+            scanner.nextLine();
             System.out.println("Introduceti numele profesorului de curs: ");
             String numeProfesorCurs = scanner.nextLine();
             System.out.println("Introduceti numele profesorului de laborator: ");
@@ -228,6 +229,10 @@ public class Service {
                 System.out.println("Elevul a fost adaugat cu succes!");
                 break;
             case 2:
+                System.out.println("Introduceti numele elevului: ");
+                String numeElev3 = scanner.nextLine();
+                clasa.stergereElev(numeElev3);
+                System.out.println("Elevul a fost sters cu succes!\n");
                break;
             case 3:
                 clasa.afisareElevi();
@@ -295,8 +300,10 @@ public class Service {
                 adaugaClasa();
                 break;
             case 2:
+                adaugaProfesor();
                 break;
             case 3:
+                adaugaMaterie();
                 break;
             case 4:
                 afisareClase();
