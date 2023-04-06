@@ -290,7 +290,7 @@ public class Service {
         System.out.println("4. Afisati clasele");
         System.out.println("5. Afisati profesorii");
         System.out.println("6. Afisati materiile");
-        System.out.println("7. Aduceti modificari asupra unei clase");
+        System.out.println("7. Actiuni asupra unei clase");
         System.out.println("8. Iesire");
         Scanner scanner = new Scanner(System.in);
         int optiune = scanner.nextInt();
