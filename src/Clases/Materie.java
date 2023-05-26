@@ -1,18 +1,29 @@
-import java.util.Date;
+package Clases;
 
 public class Materie {
 
     String nume;
-
+    int id;
     int nrCredite;
+    int idProfesorCurs;
+    int idProfesorLaborator;
     Profesor profesorCurs;
     Profesor profesorLaborator;
 
-    public Materie(String nume, int nrCredite, Profesor profesorCurs, Profesor profesorLaborator) {
+    public Materie(int id,String nume, int nrCredite, Profesor profesorCurs, Profesor profesorLaborator) {
+        this.id = id;
         this.nume = nume;
         this.nrCredite = nrCredite;
         this.profesorCurs = profesorCurs;
         this.profesorLaborator = profesorLaborator;
+    }
+
+    public Materie(int id,String nume, int nrCredite, int idProfesorCurs, int idProfesorLaborator) {
+        this.id = id;
+        this.nume = nume;
+        this.nrCredite = nrCredite;
+        this.idProfesorCurs = idProfesorCurs;
+        this.idProfesorLaborator = idProfesorLaborator;
     }
 
     public String getNume() {
@@ -48,12 +59,36 @@ public class Materie {
         this.profesorLaborator = profesorLaborator;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdProfesorCurs() {
+        return idProfesorCurs;
+    }
+
+    public void setIdProfesorCurs(int idProfesorCurs) {
+        this.idProfesorCurs = idProfesorCurs;
+    }
+
+    public int getIdProfesorLaborator() {
+        return idProfesorLaborator;
+    }
+
+    public void setIdProfesorLaborator(int idProfesorLaborator) {
+        this.idProfesorLaborator = idProfesorLaborator;
+    }
+
     public void afisare(){
         System.out.println("=====================================================");
         System.out.println("Nume materie: " + this.nume);
         System.out.println("Numar credite: " + this.nrCredite);
-        System.out.println("Profesor curs: " + this.profesorCurs.getNume() + " " + this.profesorCurs.getPrenume());
-        System.out.println("Profesor laborator: " + this.profesorLaborator.getNume() + " " + this.profesorLaborator.getPrenume());
+        System.out.println("Clases.Profesor curs: " + this.profesorCurs.getNume() + " " + this.profesorCurs.getPrenume());
+        System.out.println("Clases.Profesor laborator: " + this.profesorLaborator.getNume() + " " + this.profesorLaborator.getPrenume());
         System.out.println("=====================================================");
     }
 }

@@ -1,11 +1,13 @@
+package Clases;
 import java.util.*;
+
 
 public class Scoala {
 
-    Map <String, Clasa> clase = new HashMap<String, Clasa>();
-    List <Materie> materii = new ArrayList<Materie>();
-    Map <String, Profesor> profesori = new HashMap<String, Profesor>();
-    String numeScoala;
+    public Map <String, Clasa> clase = new HashMap<String, Clasa>();
+    public List <Materie> materii = new ArrayList<Materie>();
+    public Map <String, Profesor> profesori = new HashMap<String, Profesor>();
+    public String numeScoala;
 
     public Scoala(String numeScoala) {
         this.numeScoala = numeScoala;

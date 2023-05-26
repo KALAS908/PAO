@@ -1,11 +1,14 @@
+package Clases;
 public  abstract class  Persoana {
+    int id;
 
     protected String nume;
     protected String prenume;
     protected int varsta;
     protected String sex;
 
-    public Persoana(String nume, String prenume, int varsta, String sex) {
+    public Persoana(int id,String nume, String prenume, int varsta, String sex) {
+        this.id = id;
         this.nume = nume;
         this.prenume = prenume;
         this.varsta = varsta;
@@ -45,6 +48,6 @@ public  abstract class  Persoana {
     }
 
     ///abstract  void afisare();
-    abstract void afisare();
+    public abstract String toString();
 
 }
