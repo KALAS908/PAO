@@ -1,4 +1,4 @@
-import java.util.Date;
+package Clases;
 
 public class Materie {
 
@@ -52,8 +52,8 @@ public class Materie {
         System.out.println("=====================================================");
         System.out.println("Nume materie: " + this.nume);
         System.out.println("Numar credite: " + this.nrCredite);
-        System.out.println("Profesor curs: " + this.profesorCurs.getNume() + " " + this.profesorCurs.getPrenume());
-        System.out.println("Profesor laborator: " + this.profesorLaborator.getNume() + " " + this.profesorLaborator.getPrenume());
+        System.out.println("Clases.Profesor curs: " + this.profesorCurs.getNume() + " " + this.profesorCurs.getPrenume());
+        System.out.println("Clases.Profesor laborator: " + this.profesorLaborator.getNume() + " " + this.profesorLaborator.getPrenume());
         System.out.println("=====================================================");
     }
 }

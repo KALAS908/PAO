@@ -1,19 +1,20 @@
+package Clases;
+
 public class Elev extends Persoana {
 
      String clasa;
      String scoala;
      double medie;
      Nota[] note = new Nota[10];
-
-    public Elev(String nume,String prenume, int varsta, String sex, String clasa, String scoala, double medie  )  {
-        super(nume,prenume, varsta, sex);
+    public Elev(int id,String nume,String prenume, int varsta, String sex, String clasa, String scoala, double medie  )  {
+        super(id,nume,prenume, varsta, sex);
         this.clasa = clasa;
         this.scoala = scoala;
         this.medie = medie;
     }
 
-    public Elev(String nume,String prenume, int varsta, String sex, String clasa, String scoala) {
-        super(nume, prenume,varsta, sex);
+    public Elev(int id,String nume,String prenume, int varsta, String sex, String clasa, String scoala) {
+        super(id,nume, prenume,varsta, sex);
         this.clasa = clasa;
         this.scoala = scoala;
     }
@@ -75,21 +76,23 @@ public class Elev extends Persoana {
     public void afiseazaNote() {
         for (int i = 0; i < note.length; i++) {
             if (note[i] != null) {
-                System.out.println("Materie: " + note[i].getMaterie() + "; Nota: " + note[i].getNota());
+                System.out.println("Clases.Materie: " + note[i].getMaterie() + "; Clases.Nota: " + note[i].getNota());
             }
         }
     }
 
     @Override
-    public void afisare()
+    public  String toString()
     {
-        System.out.println("=====================================================");
-        System.out.println("Nume elev: " + this.nume + " " + this.prenume);
-        System.out.println("Varsta: " + this.varsta);
-        System.out.println("Clasa: " + this.clasa);
-        this.afiseazaNote();
-        System.out.println("Media este: " + this.medie);
-        System.out.println("=====================================================");
+        return "Clases.Elev{"+
+                "id=" + id +
+                ", nume='" + nume + '\'' +
+                ", prenume='" + prenume + '\'' +
+                ", varsta=" + varsta +
+                ", clasa=" + clasa +
+                ", scoala=" + scoala +
+                ", medie=" + medie +
+                "}";
     }
 
 }
