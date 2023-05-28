@@ -1,7 +1,10 @@
 package DataBase;
+
 import Audit.Audit;
 import Clases.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,10 +14,21 @@ import java.util.Scanner;
 
 public class DataBaseService {
 
+
+    public static String readDatabasePassword() {
+        String password = null;
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\tudor\\OneDrive\\Desktop\\PAROLA.txt"))) {
+            password = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return password;
+    }
+
     public Connection conexiune;
     String url = "jdbc:mysql://localhost:3306/pao252";
     String username = "root";
-    String password = "hT@5030204374522";
+    String password = readDatabasePassword();
     Audit audit = new Audit();
 
     List<Profesor> profesori = new ArrayList<Profesor>();
