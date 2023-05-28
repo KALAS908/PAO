@@ -247,12 +247,21 @@ public void adaugaElev(Elev elev) {
             Profesor profesor6 = new Profesor(9,"Dumitrescu", "Ana", 27, "F", "LMK", 4000, "Informatica", 1);
 
 
+<<<<<<< HEAD
             Materie Matematica = new Materie(1,"Matematica", 5,Tudor, profesor1);
             Materie Istorie = new Materie(2,"Istorie", 4,Andrei, profesor3);
             Materie Romana = new Materie(3,"Romana", 4,Cosmin, Cosmin);
             Materie Fizica = new Materie(4,"Fizica", 4,profesor2, profesor2);
             Materie Chimie = new Materie(5,"Chimie", 4,profesor5, profesor5);
             Materie Informatica = new Materie(6,"Informatica", 4,profesor6, profesor6);
+=======
+            Materie Matematica = new Materie("Matematica", 5,Tudor, profesor1);
+            Materie Istorie = new Materie("Istorie", 4,Andrei, profesor3);
+            Materie Romana = new Materie("Romana", 4,Cosmin, Cosmin);
+            Materie Fizica = new Materie("Fizica", 4,profesor2, profesor2);
+            Materie Chimie = new Materie("Chimie", 4,profesor5, profesor5);
+            Materie Informatica = new Materie("Informatica", 4,profesor6, profesor6);
+>>>>>>> origin/DATA_BASE
 
 
             scoala.adaugaProfesor(Tudor);
@@ -401,12 +410,16 @@ public void adaugaElev(Elev elev) {
 
 
             public void adaugaMaterie() {
+<<<<<<< HEAD
 
 
             Scanner scanner = new Scanner(System.in);
                 System.out.println("Introduceti id-ul materiei: ");
                 int idMaterie = scanner.nextInt();
                 scanner.nextLine();
+=======
+                Scanner scanner = new Scanner(System.in);
+>>>>>>> origin/DATA_BASE
                 System.out.println("Introduceti numele materiei: ");
                 String numeMaterie = scanner.nextLine();
                 System.out.println("Intorduceti numarul de credite: ");
@@ -420,7 +433,11 @@ public void adaugaElev(Elev elev) {
                 if (scoala.getProfesori().containsKey(numeProfesorCurs) && scoala.getProfesori().containsKey(numeProfesorLab)){
                     Profesor profesor = scoala.getProfesori().get(numeProfesorCurs);
                     Profesor profesor1 = scoala.getProfesori().get(numeProfesorLab);
+<<<<<<< HEAD
                     Materie materie = new Materie(idMaterie,numeMaterie, nrCredite, profesor, profesor1);
+=======
+                    Materie materie = new Materie(numeMaterie, nrCredite, profesor, profesor1);
+>>>>>>> origin/DATA_BASE
                     scoala.adaugaMaterie(materie);
                     System.out.println("Materia a fost adaugata cu succes!");
                 }

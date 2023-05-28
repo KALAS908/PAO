@@ -42,7 +42,10 @@ public class DataBase {
         String sqlMaterie = "CREATE TABLE IF NOT EXISTS MATERII("
                 + "materie_id INTEGER PRIMARY KEY ,"
                 + "nume VARCHAR(50) NOT NULL,"
+<<<<<<< HEAD
                 + "credite INTEGER NOT NULL,"
+=======
+>>>>>>> origin/DATA_BASE
                 + "profesor_curs_id INTEGER NOT NULL,"
                 + "profesor_laborator_id INTEGER NOT NULL,"
                 + "FOREIGN KEY (profesor_curs_id) REFERENCES PROFESORI(profesor_id),"

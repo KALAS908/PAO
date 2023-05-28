@@ -3,9 +3,12 @@ package Clases;
 public class Nota {
 
     double nota;
+<<<<<<< HEAD
     int idElev;
     int idMaterie;
     int id;
+=======
+>>>>>>> origin/DATA_BASE
     String materie;
 
     public Nota(double nota, String materie) {
@@ -13,6 +16,7 @@ public class Nota {
         this.materie = materie;
     }
 
+<<<<<<< HEAD
     public Nota(int id,int idElev, int idMaterie, double nota, String materie) {
         this.nota = nota;
         this.idElev = idElev;
@@ -21,10 +25,13 @@ public class Nota {
         this.materie = materie;
     }
 
+=======
+>>>>>>> origin/DATA_BASE
     public double getNota() {
         return nota;
     }
 
+<<<<<<< HEAD
     public int getIdElev() {
         return idElev;
     }
@@ -53,11 +60,16 @@ public class Nota {
 
 
 
+=======
+>>>>>>> origin/DATA_BASE
     public void setNota(double nota) {
         this.nota = nota;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/DATA_BASE
     public String getMaterie() {
         return materie;
     }

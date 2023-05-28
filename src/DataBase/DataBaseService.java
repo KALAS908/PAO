@@ -1,5 +1,6 @@
 package DataBase;
 
+<<<<<<< HEAD
 import Clases.*;
 
 import java.sql.*;
@@ -50,6 +51,16 @@ public class DataBaseService {
         System.out.println("Introduceti id-ul profesorului: ");
         int id = scanner.nextInt();
         scanner.nextLine();
+=======
+import java.util.Scanner;
+public class DataBaseService {
+
+
+
+    public void AddProfesor()
+    {
+        Scanner scanner = new Scanner(System.in);
+>>>>>>> origin/DATA_BASE
         System.out.println("Introduceti numele profesorului: ");
         String nume = scanner.nextLine();
         System.out.println("Introduceti prenumele profesorului: ");
@@ -69,6 +80,7 @@ public class DataBaseService {
         System.out.println("Introduceti gradul profesorului: ");
         int grad = scanner.nextInt();
         scanner.nextLine();
+<<<<<<< HEAD
         Profesor profesor = new Profesor(id, nume, prenume, varsta, sex, scoala, salariu, materie, grad);
         profesori.add(profesor);
 
@@ -94,11 +106,15 @@ public class DataBaseService {
 
 
 //        return "INSERT INTO profesori VALUES ("+profesor.getID()+","+profesor.getNume()+","+profesor.getPrenume()+","+profesor.getVarsta()+","+profesor.getSex()+","+profesor.getScoala()+","+profesor.getSalariu()+","+profesor.getMaterie()+","+profesor.getGrad()+")";
+=======
+
+>>>>>>> origin/DATA_BASE
     }
 
 
     public void AddElev()
     {
+<<<<<<< HEAD
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduceti id-ul elevului: ");
         int id = scanner.nextInt();
@@ -405,4 +421,23 @@ public class DataBaseService {
 
 
 
+=======
+
+
+    }
+
+
+    public void AddMaterie()
+    {
+
+
+    }
+
+    public void AddNota()
+    {
+
+
+    }
+
+>>>>>>> origin/DATA_BASE
 }
