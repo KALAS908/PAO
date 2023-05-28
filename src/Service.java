@@ -1,5 +1,7 @@
-import java.util.*;
+import Clases.*;
 
+import java.util.Map;
+import java.util.Scanner;
 public class Service {
 
     Scoala scoala;
@@ -10,23 +12,23 @@ public class Service {
         String numeScoala = scanner.nextLine();
         scoala = new Scoala(numeScoala);
 
-        Profesor Tudor = new Profesor("Haulica" , "Tudor" , 20, "M", "LMK", 30000,"Matematica",1);
-        Profesor Andrei = new Profesor("Popescu" , "Andrei" , 30, "M", "LMK", 30000,"Istorie",1);
-        Profesor Cosmin = new Profesor("Popa" , "Cosmin" , 30, "M", "LMK", 30000,"Romana",1);
-        Profesor profesor1 = new Profesor("Hrincu", "Ion", 35, "M", "LMK", 5000, "Matematica", 2);
-        Profesor profesor2 = new Profesor("Ionescu", "Maria", 28, "F", "LMK", 5500, "Fizica", 1);
-        Profesor profesor3 = new Profesor("Vasilescu", "Alexandru", 42, "M", "LMK", 6000, "Istorie", 3);
-        Profesor profesor4 = new Profesor("Georgescu", "Andreea", 31, "F", "LMK", 4500, "Limba Engleza", 2);
-        Profesor profesor5 = new Profesor("Mandache", "Mihai", 39, "M", "LMK", 5500, "Chimie", 3);
-        Profesor profesor6 = new Profesor("Dumitrescu", "Ana", 27, "F", "LMK", 4000, "Informatica", 1);
+        Profesor Tudor = new Profesor(1,"Haulica" , "Tudor" , 20, "M", "LMK", 30000,"Matematica",1);
+        Profesor Andrei = new Profesor(2,"Popescu" , "Andrei" , 30, "M", "LMK", 30000,"Istorie",1);
+        Profesor Cosmin = new Profesor(3,"Popa" , "Cosmin" , 30, "M", "LMK", 30000,"Romana",1);
+        Profesor profesor1 = new Profesor(4,"Hrincu", "Ion", 35, "M", "LMK", 5000, "Matematica", 2);
+        Profesor profesor2 = new Profesor(5,"Ionescu", "Maria", 28, "F", "LMK", 5500, "Fizica", 1);
+        Profesor profesor3 = new Profesor(6,"Vasilescu", "Alexandru", 42, "M", "LMK", 6000, "Istorie", 3);
+        Profesor profesor4 = new Profesor(7,"Georgescu", "Andreea", 31, "F", "LMK", 4500, "Limba Engleza", 2);
+        Profesor profesor5 = new Profesor(8,"Mandache", "Mihai", 39, "M", "LMK", 5500, "Chimie", 3);
+        Profesor profesor6 = new Profesor(9,"Dumitrescu", "Ana", 27, "F", "LMK", 4000, "Informatica", 1);
 
 
-        Materie Matematica = new Materie("Matematica", 5,Tudor, profesor1);
-        Materie Istorie = new Materie("Istorie", 4,Andrei, profesor3);
-        Materie Romana = new Materie("Romana", 4,Cosmin, Cosmin);
-        Materie Fizica = new Materie("Fizica", 4,profesor2, profesor2);
-        Materie Chimie = new Materie("Chimie", 4,profesor5, profesor5);
-        Materie Informatica = new Materie("Informatica", 4,profesor6, profesor6);
+        Materie Matematica = new Materie(1,"Matematica", 5,Tudor, profesor1);
+        Materie Istorie = new Materie(2,"Istorie", 4,Andrei, profesor3);
+        Materie Romana = new Materie(3,"Romana", 4,Cosmin, Cosmin);
+        Materie Fizica = new Materie(4,"Fizica", 4,profesor2, profesor2);
+        Materie Chimie = new Materie(5,"Chimie", 4,profesor5, profesor5);
+        Materie Informatica = new Materie(6,"Informatica", 4,profesor6, profesor6);
 
 
         scoala.adaugaProfesor(Tudor);
@@ -112,9 +114,9 @@ public class Service {
 
     public void afisareElev(String numeElev) {
         for (Map.Entry<String, Clasa> entry : scoala.clase.entrySet()) {
-            for (Elev elev : entry.getValue().elevi) {
+            for (Elev elev : entry.getValue().getElevi()) {
                 if (elev.getNume().equals(numeElev)) {
-                    elev.afisare();
+                    elev.toString();
                 }
             }
         }
@@ -150,6 +152,9 @@ public class Service {
 
       public void adaugaProfesor() {
           Scanner scanner = new Scanner(System.in);
+          System.out.println("Introduceti id-ul profesorului: ");
+          int idProfesor = scanner.nextInt();
+          scanner.nextLine();
           System.out.println("Introduceti numele profesorului: ");
           String numeProfesor = scanner.nextLine();
           System.out.println("Introduceti prenumele profesorului: ");
@@ -168,7 +173,7 @@ public class Service {
           System.out.println("Introducet gradul profesorului: ");
           int gradProfesor = scanner.nextInt();
 
-          Profesor profesor = new Profesor(numeProfesor, prenumeProfesor, varstaProfesor, genProfesor, numeSc, salariuProfesor, materieProfesor, gradProfesor);
+          Profesor profesor = new Profesor(idProfesor,numeProfesor, prenumeProfesor, varstaProfesor, genProfesor, numeSc, salariuProfesor, materieProfesor, gradProfesor);
           scoala.adaugaProfesor(profesor);
           System.out.println("Profesorul a fost adaugat cu succes!");
       }
@@ -176,6 +181,8 @@ public class Service {
 
         public void adaugaMaterie() {
             Scanner scanner = new Scanner(System.in);
+            System.out.println("intoduceti id-ul materiei: ");
+            int idMaterie = scanner.nextInt();
             System.out.println("Introduceti numele materiei: ");
             String numeMaterie = scanner.nextLine();
             System.out.println("Intorduceti numarul de credite: ");
@@ -189,7 +196,7 @@ public class Service {
             if (scoala.getProfesori().containsKey(numeProfesorCurs) && scoala.getProfesori().containsKey(numeProfesorLab)){
                 Profesor profesor = scoala.getProfesori().get(numeProfesorCurs);
                 Profesor profesor1 = scoala.getProfesori().get(numeProfesorLab);
-                Materie materie = new Materie(numeMaterie, nrCredite, profesor, profesor1);
+                Materie materie = new Materie(idMaterie,numeMaterie, nrCredite, profesor, profesor1);
                 scoala.adaugaMaterie(materie);
                 System.out.println("Materia a fost adaugata cu succes!");
             }
@@ -214,6 +221,9 @@ public class Service {
         scanner.nextLine();
         switch (optiune) {
             case 1:
+                System.out.println("Introduceti id-ul elevului: ");
+                int idElev = scanner.nextInt();
+                scanner.nextLine();
                 System.out.println("Introduceti numele elevului: ");
                 String numeElev = scanner.nextLine();
                 System.out.println("Introduceti prenumele elevului: ");
@@ -224,7 +234,7 @@ public class Service {
                 System.out.println("Introduceti genul elevului:(M/F) ");
                 String genElev = scanner.nextLine();
                 String numeSc = scoala.getNumeScoala();
-                Elev elev = new Elev(numeElev, prenumeElev, varstaElev, genElev,clasa.getNumeClasa(), numeSc);
+                Elev elev = new Elev(idElev,numeElev, prenumeElev, varstaElev, genElev,clasa.getNumeClasa(), numeSc);
                 clasa.adaugaElev(elev);
                 System.out.println("Elevul a fost adaugat cu succes!");
                 break;
@@ -243,7 +253,7 @@ public class Service {
                 String numeElev1 = scanner.nextLine();
                 for (Elev elev1 : clasa.getElevi()) {
                     if (elev1.getNume().equals(numeElev1)) {
-                       elev1.afisare();
+                       elev1.toString();
                        ok =1;
                     }
                 }
@@ -252,7 +262,7 @@ public class Service {
                 }
                 break;
             case 5:
-                 clasa.getDiriginte().afisare();
+                 clasa.getDiriginte().toString();
                 break;
             case 6:
                 int ok1 = 0;
