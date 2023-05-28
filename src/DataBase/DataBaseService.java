@@ -1,6 +1,6 @@
 package DataBase;
 
-<<<<<<< HEAD
+
 import Clases.*;
 
 import java.sql.*;
@@ -11,10 +11,10 @@ import java.util.Scanner;
 
 public class DataBaseService {
 
-     public Connection conexiune;
-     String url = "jdbc:mysql://localhost:3306/pao252";
-     String username = "root";
-     String password = "hT@5030204374522";
+    public Connection conexiune;
+    String url = "jdbc:mysql://localhost:3306/pao252";
+    String username = "root";
+    String password = "hT@5030204374522";
 
     List<Profesor> profesori = new ArrayList<Profesor>();
     List<Elev> elevi = new ArrayList<Elev>();
@@ -24,26 +24,22 @@ public class DataBaseService {
     DataBase dataBase = new DataBase();
 
 
+    public void CreareConexiune() {
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            System.out.println("Conexiunea la baza de date a fost realizata cu succes");
 
-     public void CreareConexiune()
-     {
-         try (Connection connection = DriverManager.getConnection(url, username, password))
-         {  System.out.println("Conexiunea la baza de date a fost realizata cu succes");
+            Statement statement = connection.createStatement();
+            statement.execute(dataBase.CreateTablePROFESORI());
+            statement.execute(dataBase.CreateTableELEVI());
+            statement.execute(dataBase.CreateTableMATERII());
+            statement.execute(dataBase.CreateTableNOTE());
 
-             Statement statement = connection.createStatement();
-             statement.execute(dataBase.CreateTablePROFESORI());
-             statement.execute(dataBase.CreateTableELEVI());
-             statement.execute(dataBase.CreateTableMATERII());
-             statement.execute(dataBase.CreateTableNOTE());
-
-         }catch (SQLException e)
-         {
-             throw new RuntimeException("Ceva nu a mers bine =(");
-         }
+        } catch (SQLException e) {
+            throw new RuntimeException("Ceva nu a mers bine =(");
+        }
 
 
-     }
-
+    }
 
 
     public void AddProfesor() {
@@ -51,16 +47,6 @@ public class DataBaseService {
         System.out.println("Introduceti id-ul profesorului: ");
         int id = scanner.nextInt();
         scanner.nextLine();
-=======
-import java.util.Scanner;
-public class DataBaseService {
-
-
-
-    public void AddProfesor()
-    {
-        Scanner scanner = new Scanner(System.in);
->>>>>>> origin/DATA_BASE
         System.out.println("Introduceti numele profesorului: ");
         String nume = scanner.nextLine();
         System.out.println("Introduceti prenumele profesorului: ");
@@ -80,7 +66,7 @@ public class DataBaseService {
         System.out.println("Introduceti gradul profesorului: ");
         int grad = scanner.nextInt();
         scanner.nextLine();
-<<<<<<< HEAD
+
         Profesor profesor = new Profesor(id, nume, prenume, varsta, sex, scoala, salariu, materie, grad);
         profesori.add(profesor);
 
@@ -106,15 +92,10 @@ public class DataBaseService {
 
 
 //        return "INSERT INTO profesori VALUES ("+profesor.getID()+","+profesor.getNume()+","+profesor.getPrenume()+","+profesor.getVarsta()+","+profesor.getSex()+","+profesor.getScoala()+","+profesor.getSalariu()+","+profesor.getMaterie()+","+profesor.getGrad()+")";
-=======
 
->>>>>>> origin/DATA_BASE
     }
 
-
-    public void AddElev()
-    {
-<<<<<<< HEAD
+    public void AddElev() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduceti id-ul elevului: ");
         int id = scanner.nextInt();
@@ -136,10 +117,10 @@ public class DataBaseService {
         System.out.println("Introduceti scoala elevului: ");
         String scoala = scanner.nextLine();
 
-        Elev elev = new Elev(id,nume,prenume,varsta,sex,clasa,scoala,medie);
+        Elev elev = new Elev(id, nume, prenume, varsta, sex, clasa, scoala, medie);
         elevi.add(elev);
-        try (Connection connection = DriverManager.getConnection(url, username, password))
-        {    String insert = "INSERT INTO elevi(elev_id,nume,prenume,varsta,sex,scoala,clasa,medie) VALUES(? , ? , ? , ? , ? , ? , ? , ?)";
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String insert = "INSERT INTO elevi(elev_id,nume,prenume,varsta,sex,scoala,clasa,medie) VALUES(? , ? , ? , ? , ? , ? , ? , ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insert);
             preparedStatement.setInt(1, elev.getId());
             preparedStatement.setString(2, elev.getNume());
@@ -152,9 +133,7 @@ public class DataBaseService {
             preparedStatement.executeUpdate();
             System.out.println("Elevul a fost adaugat cu succes!");
 
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println("Ceva nu a mers bine =(");
             throw new RuntimeException(e);
         }
@@ -180,8 +159,7 @@ public class DataBaseService {
 
         Materie materie = new Materie(id, nume, credite, id_profesor_curs, id_profesor_lab);
         materii.add(materie);
-        try (Connection connection = DriverManager.getConnection(url, username, password))
-        {
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String insert = "INSERT INTO materii(materie_id,nume,credite,profesor_curs_id,profesor_laborator_id) VALUES(? , ? , ? , ? , ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insert);
             preparedStatement.setInt(1, materie.getId());
@@ -192,18 +170,14 @@ public class DataBaseService {
             preparedStatement.executeUpdate();
             System.out.println("Materia a fost adaugata cu succes!");
 
-        }
-
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println("Ceva nu a mers bine =(");
             throw new RuntimeException(e);
         }
     }
 
 
-    public void AddNota()
-    {
+    public void AddNota() {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduceti id-ul notei: ");
@@ -222,12 +196,11 @@ public class DataBaseService {
         String nume_materie = scanner.nextLine();
 
 
-          Nota nota1 = new Nota(id,id_elev,id_materie,nota,nume_materie);
-          note.add(nota1);
+        Nota nota1 = new Nota(id, id_elev, id_materie, nota, nume_materie);
+        note.add(nota1);
 
 
-        try (Connection connection = DriverManager.getConnection(url, username, password))
-        {
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String insert = "INSERT INTO note(nota_id,elev_id,materie_id,materie,nota) VALUES(? , ? , ? , ? , ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insert);
             preparedStatement.setInt(1, nota1.getId());
@@ -236,9 +209,7 @@ public class DataBaseService {
             preparedStatement.setString(4, nota1.getMaterie());
             preparedStatement.setDouble(5, nota1.getNota());
             preparedStatement.executeUpdate();
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println("Ceva nu a mers bine =(");
             throw new RuntimeException(e);
         }
@@ -247,10 +218,7 @@ public class DataBaseService {
     }
 
 
-
-
-    public void UpdateElev()
-    {
+    public void UpdateElev() {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduceti id-ul elevului pe care doriti sa-l modificati: ");
@@ -260,25 +228,21 @@ public class DataBaseService {
         System.out.println("2.Media");
         System.out.println("3.Scoala");
         int optiune = scanner.nextInt();
-          scanner.nextLine();
+        scanner.nextLine();
 
-        switch (optiune)
-        {
+        switch (optiune) {
             case 1:
                 System.out.println("Introduceti noua clasa: ");
                 String clasa = scanner.nextLine();
 
-                try (Connection connection = DriverManager.getConnection(url, username, password))
-                {
+                try (Connection connection = DriverManager.getConnection(url, username, password)) {
                     String update = "UPDATE elevi SET clasa = ? WHERE elev_id = ?";
                     PreparedStatement preparedStatement = connection.prepareStatement(update);
                     preparedStatement.setString(1, clasa);
                     preparedStatement.setInt(2, id);
                     preparedStatement.executeUpdate();
                     System.out.println("Clasa a fost modificata cu succes!");
-                }
-                catch (SQLException e)
-                {
+                } catch (SQLException e) {
                     System.out.println("Ceva nu a mers bine =(");
                     throw new RuntimeException(e);
                 }
@@ -287,17 +251,14 @@ public class DataBaseService {
                 System.out.println("Introduceti noua medie: ");
                 double medie = scanner.nextDouble();
                 scanner.nextLine();
-                try (Connection connection = DriverManager.getConnection(url, username, password))
-                {
+                try (Connection connection = DriverManager.getConnection(url, username, password)) {
                     String update = "UPDATE elevi SET medie = ? WHERE elev_id = ?";
                     PreparedStatement preparedStatement = connection.prepareStatement(update);
                     preparedStatement.setDouble(1, medie);
                     preparedStatement.setInt(2, id);
                     preparedStatement.executeUpdate();
                     System.out.println("Media a fost modificata cu succes!");
-                }
-                catch (SQLException e)
-                {
+                } catch (SQLException e) {
                     System.out.println("Ceva nu a mers bine =(");
                     throw new RuntimeException(e);
                 }
@@ -305,17 +266,14 @@ public class DataBaseService {
             case 3:
                 System.out.println("Introduceti noua scoala: ");
                 String scoala = scanner.nextLine();
-                try (Connection connection = DriverManager.getConnection(url, username, password))
-                {
+                try (Connection connection = DriverManager.getConnection(url, username, password)) {
                     String update = "UPDATE elevi SET scoala = ? WHERE elev_id = ?";
                     PreparedStatement preparedStatement = connection.prepareStatement(update);
                     preparedStatement.setString(1, scoala);
                     preparedStatement.setInt(2, id);
                     preparedStatement.executeUpdate();
                     System.out.println("Scoala a fost modificata cu succes!");
-                }
-                catch (SQLException e)
-                {
+                } catch (SQLException e) {
                     System.out.println("Ceva nu a mers bine =(");
                     throw new RuntimeException(e);
                 }
@@ -326,12 +284,10 @@ public class DataBaseService {
         }
 
 
-
     }
 
 
-    public void UpdateProfesor()
-    {
+    public void UpdateProfesor() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduceti id-ul profesorului pe care doriti sa-l modificati: ");
         int id = scanner.nextInt();
@@ -343,23 +299,19 @@ public class DataBaseService {
         scanner.nextLine();
 
 
-        switch (optiune)
-        {
+        switch (optiune) {
             case 1:
                 System.out.println("Introduceti noua scoala: ");
                 String scoala = scanner.nextLine();
 
-                try (Connection connection = DriverManager.getConnection(url, username, password))
-                {
+                try (Connection connection = DriverManager.getConnection(url, username, password)) {
                     String update = "UPDATE profesori SET scoala = ? WHERE profesor_id = ?";
                     PreparedStatement preparedStatement = connection.prepareStatement(update);
                     preparedStatement.setString(1, scoala);
                     preparedStatement.setInt(2, id);
                     preparedStatement.executeUpdate();
                     System.out.println("Scoala a fost modificata cu succes!");
-                }
-                catch (SQLException e)
-                {
+                } catch (SQLException e) {
                     System.out.println("Ceva nu a mers bine =(");
                     throw new RuntimeException(e);
                 }
@@ -368,17 +320,14 @@ public class DataBaseService {
                 System.out.println("Introduceti noul salariu: ");
                 double salariu = scanner.nextDouble();
                 scanner.nextLine();
-                try (Connection connection = DriverManager.getConnection(url, username, password))
-                {
+                try (Connection connection = DriverManager.getConnection(url, username, password)) {
                     String update = "UPDATE profesori SET salariu = ? WHERE profesor_id = ?";
                     PreparedStatement preparedStatement = connection.prepareStatement(update);
                     preparedStatement.setDouble(1, salariu);
                     preparedStatement.setInt(2, id);
                     preparedStatement.executeUpdate();
                     System.out.println("Salariul a fost modificat cu succes!");
-                }
-                catch (SQLException e)
-                {
+                } catch (SQLException e) {
                     System.out.println("Ceva nu a mers bine =(");
                     throw new RuntimeException(e);
                 }
@@ -386,17 +335,14 @@ public class DataBaseService {
             case 3:
                 System.out.println("Introduceti noua materie: ");
                 String materie = scanner.nextLine();
-                try (Connection connection = DriverManager.getConnection(url, username, password))
-                {
+                try (Connection connection = DriverManager.getConnection(url, username, password)) {
                     String update = "UPDATE profesori SET materie = ? WHERE profesor_id = ?";
                     PreparedStatement preparedStatement = connection.prepareStatement(update);
                     preparedStatement.setString(1, materie);
                     preparedStatement.setInt(2, id);
                     preparedStatement.executeUpdate();
                     System.out.println("Materia a fost modificata cu succes!");
-                }
-                catch (SQLException e)
-                {
+                } catch (SQLException e) {
                     System.out.println("Ceva nu a mers bine =(");
                     throw new RuntimeException(e);
                 }
@@ -408,36 +354,5 @@ public class DataBaseService {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-
-
-    }
-
-
-    public void AddMaterie()
-    {
-
-
-    }
-
-    public void AddNota()
-    {
-
-
-    }
-
->>>>>>> origin/DATA_BASE
 }
+
