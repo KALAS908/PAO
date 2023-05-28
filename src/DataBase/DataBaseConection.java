@@ -4,7 +4,7 @@ public class DataBaseConection {
 
     private String  url = "jdbc:mysql://localhost:3306/pao252";
     private String user = "root";
-    private String password = "hT@5030204374522";
+    private String password = "";
 
     public String getUrl() {
         return url;
